@@ -146,15 +146,6 @@ export default function AppNav() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={handleITDashboard}
-                      className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-all duration-300"
-                    >
-                      <Gauge className="h-4 w-4 mr-2" />
-                      IT Dashboard
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
                       onClick={handleHRDashboard}
                       className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-all duration-300"
                     >
