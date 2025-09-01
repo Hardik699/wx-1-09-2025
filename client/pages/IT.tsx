@@ -221,7 +221,18 @@ export default function ITPage() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-slate-300">System ID</Label>
+                <div className="flex items-center justify-between">
+                  <Label className="text-slate-300">System ID</Label>
+                  <Button
+                    type="button"
+                    onClick={loadAvailableSystemIds}
+                    size="sm"
+                    variant="outline"
+                    className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                  >
+                    <RefreshCw className="h-3 w-3" />
+                  </Button>
+                </div>
                 <Select value={systemId} onValueChange={setSystemId}>
                   <SelectTrigger className="bg-slate-800/50 border-slate-700 text-white">
                     <SelectValue placeholder={
