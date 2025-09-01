@@ -101,6 +101,9 @@ export default function ITPage() {
   const saveRecords = (next: ITRecord[]) => {
     setRecords(next);
     localStorage.setItem("itAccounts", JSON.stringify(next));
+
+    // Refresh available system IDs after saving
+    loadAvailableSystemIds();
   };
 
   // Form state
