@@ -384,9 +384,12 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
+                      <SelectItem value="">
+                        <span className="text-slate-400">-- No Camera --</span>
+                      </SelectItem>
                       {cameraAssets.length === 0 ? (
                         <div className="px-3 py-2 text-slate-400">
-                          No camera items
+                          No available camera items
                         </div>
                       ) : (
                         cameraAssets.map((m) => (
@@ -416,9 +419,12 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
+                      <SelectItem value="">
+                        <span className="text-slate-400">-- No Headphone --</span>
+                      </SelectItem>
                       {headphoneAssets.length === 0 ? (
                         <div className="px-3 py-2 text-slate-400">
-                          No headphone items
+                          No available headphone items
                         </div>
                       ) : (
                         headphoneAssets.map((m) => (
@@ -448,9 +454,12 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
+                      <SelectItem value="">
+                        <span className="text-slate-400">-- No Power Supply --</span>
+                      </SelectItem>
                       {powerSupplyAssets.length === 0 ? (
                         <div className="px-3 py-2 text-slate-400">
-                          No power supply items
+                          No available power supply items
                         </div>
                       ) : (
                         powerSupplyAssets.map((m) => (
@@ -476,9 +485,12 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
+                      <SelectItem value="">
+                        <span className="text-slate-400">-- No RAM --</span>
+                      </SelectItem>
                       {ramAssets.length === 0 ? (
                         <div className="px-3 py-2 text-slate-400">
-                          No RAM items
+                          No available RAM items
                         </div>
                       ) : (
                         ramAssets.map((m) => (
