@@ -77,7 +77,7 @@ export default function PCLaptopInfo() {
   const getUsedIds = (items: Asset[], field: keyof Asset): string[] => {
     return items
       .map(item => item[field])
-      .filter((id): id is string => !!id);
+      .filter((id): id is string => !!id && id !== "none");
   };
 
   // Helper function to filter available assets (not used)
