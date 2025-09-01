@@ -18,6 +18,7 @@ import ITDashboard from "./pages/ITDashboard";
 import SystemInfo from "./pages/SystemInfo";
 import SystemInfoDetail from "./pages/SystemInfoDetail";
 import PCLaptopInfo from "./pages/PCLaptopInfo";
+import DemoDataView from "./pages/DemoDataView";
 
 const queryClient = new QueryClient();
 
