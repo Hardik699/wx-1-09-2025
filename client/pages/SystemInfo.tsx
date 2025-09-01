@@ -123,7 +123,7 @@ export default function SystemInfo() {
               Load Demo Data
             </Button>
             <Badge variant="secondary" className="bg-slate-700 text-slate-300">
-              {assetCount} assets
+              {assetCount} assets | {items.length} categories
             </Badge>
           </div>
         </header>
