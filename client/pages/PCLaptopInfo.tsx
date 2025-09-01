@@ -121,14 +121,49 @@ export default function PCLaptopInfo() {
   }, []);
 
   const openForm = () => {
-    const id = nextWxId(items);
-    const firstMouse = mouseAssets[0]?.id || "";
-    const firstKeyboard = keyboardAssets[0]?.id || "";
-    const firstMotherboard = motherboardAssets[0]?.id || "";
-    const firstCamera = cameraAssets[0]?.id || "";
-    const firstHeadphone = headphoneAssets[0]?.id || "";
-    const firstPower = powerSupplyAssets[0]?.id || "";
-    const firstRam = ramAssets[0]?.id || "";
+    // Refresh available assets before opening form
+    const raw = localStorage.getItem(STORAGE_KEY);
+    const currentItems = raw ? JSON.parse(raw) : [];
+
+    const sysRaw = localStorage.getItem(SYS_STORAGE_KEY);
+    const sysList: SysAsset[] = sysRaw ? JSON.parse(sysRaw) : [];
+
+    // Get all used IDs for each component type
+    const usedMouseIds = getUsedIds(currentItems, 'mouseId');
+    const usedKeyboardIds = getUsedIds(currentItems, 'keyboardId');
+    const usedMotherboardIds = getUsedIds(currentItems, 'motherboardId');
+    const usedCameraIds = getUsedIds(currentItems, 'cameraId');
+    const usedHeadphoneIds = getUsedIds(currentItems, 'headphoneId');
+    const usedPowerSupplyIds = getUsedIds(currentItems, 'powerSupplyId');
+    const usedRamIds = getUsedIds(currentItems, 'ramId');
+
+    // Get fresh available assets
+    const freshMouseAssets = getAvailableAssets(sysList.filter((s) => s.category === "mouse"), usedMouseIds);
+    const freshKeyboardAssets = getAvailableAssets(sysList.filter((s) => s.category === "keyboard"), usedKeyboardIds);
+    const freshMotherboardAssets = getAvailableAssets(sysList.filter((s) => s.category === "motherboard"), usedMotherboardIds);
+    const freshCameraAssets = getAvailableAssets(sysList.filter((s) => s.category === "camera"), usedCameraIds);
+    const freshHeadphoneAssets = getAvailableAssets(sysList.filter((s) => s.category === "headphone"), usedHeadphoneIds);
+    const freshPowerSupplyAssets = getAvailableAssets(sysList.filter((s) => s.category === "power-supply"), usedPowerSupplyIds);
+    const freshRamAssets = getAvailableAssets(sysList.filter((s) => s.category === "ram"), usedRamIds);
+
+    // Update state with fresh data
+    setMouseAssets(freshMouseAssets);
+    setKeyboardAssets(freshKeyboardAssets);
+    setMotherboardAssets(freshMotherboardAssets);
+    setCameraAssets(freshCameraAssets);
+    setHeadphoneAssets(freshHeadphoneAssets);
+    setPowerSupplyAssets(freshPowerSupplyAssets);
+    setRamAssets(freshRamAssets);
+
+    const id = nextWxId(currentItems);
+    const firstMouse = freshMouseAssets[0]?.id || "";
+    const firstKeyboard = freshKeyboardAssets[0]?.id || "";
+    const firstMotherboard = freshMotherboardAssets[0]?.id || "";
+    const firstCamera = freshCameraAssets[0]?.id || "";
+    const firstHeadphone = freshHeadphoneAssets[0]?.id || "";
+    const firstPower = freshPowerSupplyAssets[0]?.id || "";
+    const firstRam = freshRamAssets[0]?.id || "";
+
     setForm({
       id,
       mouseId: firstMouse,
