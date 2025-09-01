@@ -505,9 +505,11 @@ export default function ITPage() {
                             variant="outline"
                             size="sm"
                             className="border-red-600 text-red-400"
-                            onClick={() =>
-                              saveRecords(records.filter((x) => x.id !== r.id))
-                            }
+                            onClick={() => {
+                              saveRecords(records.filter((x) => x.id !== r.id));
+                              // Refresh available IDs after deletion
+                              setTimeout(loadAvailableSystemIds, 100);
+                            }}
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
