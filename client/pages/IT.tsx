@@ -73,7 +73,30 @@ export default function ITPage() {
     if (emps) setEmployees(JSON.parse(emps));
     if (depts) setDepartments(JSON.parse(depts));
     if (its) setRecords(JSON.parse(its));
+
+    // Load available PC/Laptop IDs
+    loadAvailableSystemIds();
   }, []);
+
+  // Load and filter available PC/Laptop IDs
+  const loadAvailableSystemIds = () => {
+    const pcLaptopData = localStorage.getItem("pcLaptopAssets");
+    const itRecords = localStorage.getItem("itAccounts");
+
+    if (pcLaptopData) {
+      const pcLaptops = JSON.parse(pcLaptopData);
+      const pcLaptopIds = pcLaptops.map((item: any) => item.id);
+
+      // Get currently assigned system IDs
+      const assignedIds = itRecords
+        ? JSON.parse(itRecords).map((record: ITRecord) => record.systemId)
+        : [];
+
+      // Filter out assigned IDs to show only available ones
+      const available = pcLaptopIds.filter((id: string) => !assignedIds.includes(id));
+      setAvailableSystemIds(available);
+    }
+  };
 
   const saveRecords = (next: ITRecord[]) => {
     setRecords(next);
