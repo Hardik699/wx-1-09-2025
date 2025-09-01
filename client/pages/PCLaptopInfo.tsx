@@ -267,7 +267,7 @@ export default function PCLaptopInfo() {
                     <SelectTrigger className="bg-slate-800/50 border-slate-700 text-white">
                       <SelectValue
                         placeholder={
-                          mouseAssets.length ? "Select mouse" : "No mouse items"
+                          mouseAssets.length ? "Select available mouse" : "No available mouse"
                         }
                       />
                     </SelectTrigger>
@@ -301,8 +301,8 @@ export default function PCLaptopInfo() {
                       <SelectValue
                         placeholder={
                           keyboardAssets.length
-                            ? "Select keyboard"
-                            : "No keyboard items"
+                            ? "Select available keyboard"
+                            : "No available keyboard"
                         }
                       />
                     </SelectTrigger>
@@ -336,8 +336,8 @@ export default function PCLaptopInfo() {
                       <SelectValue
                         placeholder={
                           motherboardAssets.length
-                            ? "Select motherboard"
-                            : "No motherboard items"
+                            ? "Select available motherboard"
+                            : "No available motherboard"
                         }
                       />
                     </SelectTrigger>
@@ -371,8 +371,8 @@ export default function PCLaptopInfo() {
                       <SelectValue
                         placeholder={
                           cameraAssets.length
-                            ? "Select camera"
-                            : "No camera items"
+                            ? "Select available camera"
+                            : "No available camera"
                         }
                       />
                     </SelectTrigger>
@@ -406,8 +406,8 @@ export default function PCLaptopInfo() {
                       <SelectValue
                         placeholder={
                           headphoneAssets.length
-                            ? "Select headphone"
-                            : "No headphone items"
+                            ? "Select available headphone"
+                            : "No available headphone"
                         }
                       />
                     </SelectTrigger>
@@ -441,8 +441,8 @@ export default function PCLaptopInfo() {
                       <SelectValue
                         placeholder={
                           powerSupplyAssets.length
-                            ? "Select power supply"
-                            : "No power supply items"
+                            ? "Select available power supply"
+                            : "No available power supply"
                         }
                       />
                     </SelectTrigger>
@@ -473,7 +473,7 @@ export default function PCLaptopInfo() {
                     <SelectTrigger className="bg-slate-800/50 border-slate-700 text-white">
                       <SelectValue
                         placeholder={
-                          ramAssets.length ? "Select RAM" : "No RAM items"
+                          ramAssets.length ? "Select available RAM" : "No available RAM"
                         }
                       />
                     </SelectTrigger>
