@@ -583,6 +583,16 @@ export default function PCLaptopInfo() {
                         <TableCell>{a.headphoneId || "-"}</TableCell>
                         <TableCell>{a.powerSupplyId || "-"}</TableCell>
                         <TableCell>{a.ramId || "-"}</TableCell>
+                        <TableCell>
+                          <Button
+                            onClick={() => openForm(a)}
+                            size="sm"
+                            className="bg-blue-500 hover:bg-blue-600 text-white flex items-center gap-1"
+                          >
+                            <Edit className="h-3 w-3" />
+                            Edit
+                          </Button>
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
