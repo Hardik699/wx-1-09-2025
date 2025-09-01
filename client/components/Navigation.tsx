@@ -60,7 +60,6 @@ export default function AppNav() {
     navigate("/login");
   };
 
-
   const handleViewUsers = () => {
     // Navigate to admin dashboard and scroll to users section
     if (location.pathname === "/admin") {

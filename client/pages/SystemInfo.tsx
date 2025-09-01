@@ -98,8 +98,10 @@ export default function SystemInfo() {
   const handleLoadDemo = () => {
     const newAssets = loadDemoData();
     if (newAssets.length > 0) {
-      setAssetCount(prev => prev + newAssets.length);
-      alert(`Loaded ${newAssets.length} demo system assets including mouse, keyboard, and other components!`);
+      setAssetCount((prev) => prev + newAssets.length);
+      alert(
+        `Loaded ${newAssets.length} demo system assets including mouse, keyboard, and other components!`,
+      );
     } else {
       alert("Demo data already exists in the system.");
     }

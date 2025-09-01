@@ -23,14 +23,14 @@ export default function DemoDataView() {
     const existing = localStorage.getItem(STORAGE_KEY);
     const allAssets: Asset[] = existing ? JSON.parse(existing) : [];
     // Filter to show only demo assets (IDs containing WX-M-001, WX-M-002, etc.)
-    const demoAssets = allAssets.filter(asset => 
-      asset.id.includes("001") || asset.id.includes("002")
+    const demoAssets = allAssets.filter(
+      (asset) => asset.id.includes("001") || asset.id.includes("002"),
     );
     setAssets(demoAssets);
   }, []);
 
-  const demoSet1 = assets.filter(asset => asset.id.includes("001"));
-  const demoSet2 = assets.filter(asset => asset.id.includes("002"));
+  const demoSet1 = assets.filter((asset) => asset.id.includes("001"));
+  const demoSet2 = assets.filter((asset) => asset.id.includes("002"));
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-deep-900 via-blue-deep-800 to-slate-900">
@@ -38,8 +38,12 @@ export default function DemoDataView() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <header className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Demo System Assets</h1>
-            <p className="text-slate-400">Loaded demo data for mouse, keyboard, and other hardware</p>
+            <h1 className="text-3xl font-bold text-white">
+              Demo System Assets
+            </h1>
+            <p className="text-slate-400">
+              Loaded demo data for mouse, keyboard, and other hardware
+            </p>
           </div>
           <div className="flex items-center gap-3">
             <Button
@@ -73,20 +77,36 @@ export default function DemoDataView() {
                       <TableHead className="text-slate-300">ID</TableHead>
                       <TableHead className="text-slate-300">Category</TableHead>
                       <TableHead className="text-slate-300">Vendor</TableHead>
-                      <TableHead className="text-slate-300">Serial Number</TableHead>
+                      <TableHead className="text-slate-300">
+                        Serial Number
+                      </TableHead>
                       <TableHead className="text-slate-300">Company</TableHead>
-                      <TableHead className="text-slate-300">Purchase Date</TableHead>
+                      <TableHead className="text-slate-300">
+                        Purchase Date
+                      </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {demoSet1.map((asset) => (
                       <TableRow key={asset.id}>
-                        <TableCell className="font-mono text-blue-400">{asset.id}</TableCell>
-                        <TableCell className="capitalize text-slate-300">{asset.category.replace('-', ' ')}</TableCell>
-                        <TableCell className="text-slate-300">{asset.vendorName}</TableCell>
-                        <TableCell className="font-mono text-slate-300">{asset.serialNumber}</TableCell>
-                        <TableCell className="text-slate-300">{asset.companyName}</TableCell>
-                        <TableCell className="text-slate-300">{asset.purchaseDate}</TableCell>
+                        <TableCell className="font-mono text-blue-400">
+                          {asset.id}
+                        </TableCell>
+                        <TableCell className="capitalize text-slate-300">
+                          {asset.category.replace("-", " ")}
+                        </TableCell>
+                        <TableCell className="text-slate-300">
+                          {asset.vendorName}
+                        </TableCell>
+                        <TableCell className="font-mono text-slate-300">
+                          {asset.serialNumber}
+                        </TableCell>
+                        <TableCell className="text-slate-300">
+                          {asset.companyName}
+                        </TableCell>
+                        <TableCell className="text-slate-300">
+                          {asset.purchaseDate}
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -114,21 +134,37 @@ export default function DemoDataView() {
                       <TableHead className="text-slate-300">ID</TableHead>
                       <TableHead className="text-slate-300">Category</TableHead>
                       <TableHead className="text-slate-300">Vendor</TableHead>
-                      <TableHead className="text-slate-300">Serial Number</TableHead>
+                      <TableHead className="text-slate-300">
+                        Serial Number
+                      </TableHead>
                       <TableHead className="text-slate-300">Company</TableHead>
-                      <TableHead className="text-slate-300">Purchase Date</TableHead>
+                      <TableHead className="text-slate-300">
+                        Purchase Date
+                      </TableHead>
                       <TableHead className="text-slate-300">Special</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {demoSet2.map((asset) => (
                       <TableRow key={asset.id}>
-                        <TableCell className="font-mono text-blue-400">{asset.id}</TableCell>
-                        <TableCell className="capitalize text-slate-300">{asset.category.replace('-', ' ')}</TableCell>
-                        <TableCell className="text-slate-300">{asset.vendorName}</TableCell>
-                        <TableCell className="font-mono text-slate-300">{asset.serialNumber}</TableCell>
-                        <TableCell className="text-slate-300">{asset.companyName}</TableCell>
-                        <TableCell className="text-slate-300">{asset.purchaseDate}</TableCell>
+                        <TableCell className="font-mono text-blue-400">
+                          {asset.id}
+                        </TableCell>
+                        <TableCell className="capitalize text-slate-300">
+                          {asset.category.replace("-", " ")}
+                        </TableCell>
+                        <TableCell className="text-slate-300">
+                          {asset.vendorName}
+                        </TableCell>
+                        <TableCell className="font-mono text-slate-300">
+                          {asset.serialNumber}
+                        </TableCell>
+                        <TableCell className="text-slate-300">
+                          {asset.companyName}
+                        </TableCell>
+                        <TableCell className="text-slate-300">
+                          {asset.purchaseDate}
+                        </TableCell>
                         <TableCell className="text-slate-300">
                           {asset.vonageNumber && (
                             <div className="text-xs">
@@ -151,7 +187,8 @@ export default function DemoDataView() {
             <CardContent className="py-12 text-center">
               <p className="text-slate-400 text-lg">No demo data found.</p>
               <p className="text-slate-500 mt-2">
-                Go back to System Info and click "Load Demo Data" to create sample assets.
+                Go back to System Info and click "Load Demo Data" to create
+                sample assets.
               </p>
             </CardContent>
           </Card>
