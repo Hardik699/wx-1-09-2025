@@ -314,9 +314,12 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
+                      <SelectItem value="">
+                        <span className="text-slate-400">-- No Keyboard --</span>
+                      </SelectItem>
                       {keyboardAssets.length === 0 ? (
                         <div className="px-3 py-2 text-slate-400">
-                          No keyboard items
+                          No available keyboard items
                         </div>
                       ) : (
                         keyboardAssets.map((m) => (
