@@ -121,7 +121,7 @@ export default function PCLaptopInfo() {
     setRamAssets(getAvailableAssets(allRamAssets, usedRamIds));
   }, []);
 
-  const openForm = () => {
+  const openForm = (itemToEdit?: Asset) => {
     // Refresh available assets before opening form
     const raw = localStorage.getItem(STORAGE_KEY);
     const currentItems = raw ? JSON.parse(raw) : [];
