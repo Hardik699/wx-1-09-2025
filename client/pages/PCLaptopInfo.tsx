@@ -88,6 +88,10 @@ export default function PCLaptopInfo() {
   };
 
   useEffect(() => {
+    // Reset editing state on component load
+    setEditingItem(null);
+    setShowForm(false);
+
     const raw = localStorage.getItem(STORAGE_KEY);
     const currentItems = raw ? JSON.parse(raw) : [];
     setItems(currentItems);
