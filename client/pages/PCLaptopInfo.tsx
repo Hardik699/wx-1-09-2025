@@ -156,18 +156,34 @@ export default function PCLaptopInfo() {
     setPowerSupplyAssets(freshPowerSupplyAssets);
     setRamAssets(freshRamAssets);
 
-    const id = nextWxId(currentItems);
-
-    setForm({
-      id,
-      mouseId: "none",
-      keyboardId: "none",
-      motherboardId: "none",
-      cameraId: "none",
-      headphoneId: "none",
-      powerSupplyId: "none",
-      ramId: "none",
-    });
+    if (itemToEdit) {
+      // Edit mode - populate form with existing data
+      setEditingItem(itemToEdit);
+      setForm({
+        id: itemToEdit.id,
+        mouseId: itemToEdit.mouseId || "none",
+        keyboardId: itemToEdit.keyboardId || "none",
+        motherboardId: itemToEdit.motherboardId || "none",
+        cameraId: itemToEdit.cameraId || "none",
+        headphoneId: itemToEdit.headphoneId || "none",
+        powerSupplyId: itemToEdit.powerSupplyId || "none",
+        ramId: itemToEdit.ramId || "none",
+      });
+    } else {
+      // Add mode - generate new ID and set defaults
+      const id = nextWxId(currentItems);
+      setEditingItem(null);
+      setForm({
+        id,
+        mouseId: "none",
+        keyboardId: "none",
+        motherboardId: "none",
+        cameraId: "none",
+        headphoneId: "none",
+        powerSupplyId: "none",
+        ramId: "none",
+      });
+    }
     setShowForm(true);
   };
 
