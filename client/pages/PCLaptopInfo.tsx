@@ -279,9 +279,12 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
+                      <SelectItem value="">
+                        <span className="text-slate-400">-- No Mouse --</span>
+                      </SelectItem>
                       {mouseAssets.length === 0 ? (
                         <div className="px-3 py-2 text-slate-400">
-                          No mouse items
+                          No available mouse items
                         </div>
                       ) : (
                         mouseAssets.map((m) => (
