@@ -159,13 +159,13 @@ export default function PCLaptopInfo() {
 
     setForm({
       id,
-      mouseId: "",
-      keyboardId: "",
-      motherboardId: "",
-      cameraId: "",
-      headphoneId: "",
-      powerSupplyId: "",
-      ramId: "",
+      mouseId: "none",
+      keyboardId: "none",
+      motherboardId: "none",
+      cameraId: "none",
+      headphoneId: "none",
+      powerSupplyId: "none",
+      ramId: "none",
     });
     setShowForm(true);
   };
