@@ -288,14 +288,7 @@ export default function PCLaptopInfo() {
           </div>
           <div className="flex gap-2 items-center">
             <Button
-              onClick={() => {
-                // Explicitly reset all form state for Add mode
-                setEditingItem(null);
-                setShowForm(false);
-                setTimeout(() => {
-                  openForm();
-                }, 50); // Small delay to ensure state reset
-              }}
+              onClick={addNew}
               className="bg-blue-500 hover:bg-blue-600 text-white"
             >
               Add
