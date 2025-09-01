@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
+import { Edit } from "lucide-react";
 
 type Asset = {
   id: string;
