@@ -114,9 +114,18 @@ export default function SystemInfo() {
             <h1 className="text-3xl font-bold text-white">System Info</h1>
             <p className="text-slate-400">Hardware categories</p>
           </div>
-          <Badge variant="secondary" className="bg-slate-700 text-slate-300">
-            {items.length} items
-          </Badge>
+          <div className="flex items-center gap-3">
+            <Button
+              onClick={handleLoadDemo}
+              className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2"
+            >
+              <Database className="h-4 w-4" />
+              Load Demo Data
+            </Button>
+            <Badge variant="secondary" className="bg-slate-700 text-slate-300">
+              {assetCount} assets
+            </Badge>
+          </div>
         </header>
 
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
