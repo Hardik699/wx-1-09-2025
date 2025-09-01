@@ -25,7 +25,6 @@ import {
   Building2,
   LayoutDashboard,
   ServerCog,
-  Gauge,
 } from "lucide-react";
 
 export default function AppNav() {
