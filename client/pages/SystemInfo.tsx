@@ -122,6 +122,14 @@ export default function SystemInfo() {
               <Database className="h-4 w-4" />
               Load Demo Data
             </Button>
+            {assetCount > 0 && (
+              <Button
+                onClick={() => navigate("/demo-data")}
+                className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
+              >
+                View Demo Data
+              </Button>
+            )}
             <Badge variant="secondary" className="bg-slate-700 text-slate-300">
               {assetCount} assets | {items.length} categories
             </Badge>
