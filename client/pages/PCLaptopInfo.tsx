@@ -131,13 +131,18 @@ export default function PCLaptopInfo() {
     const sysList: SysAsset[] = sysRaw ? JSON.parse(sysRaw) : [];
 
     // Get all used IDs for each component type
-    const usedMouseIds = getUsedIds(currentItems, 'mouseId');
-    const usedKeyboardIds = getUsedIds(currentItems, 'keyboardId');
-    const usedMotherboardIds = getUsedIds(currentItems, 'motherboardId');
-    const usedCameraIds = getUsedIds(currentItems, 'cameraId');
-    const usedHeadphoneIds = getUsedIds(currentItems, 'headphoneId');
-    const usedPowerSupplyIds = getUsedIds(currentItems, 'powerSupplyId');
-    const usedRamIds = getUsedIds(currentItems, 'ramId');
+    // When editing, exclude the current item's IDs from "used" so they appear as available
+    const itemsToCheck = itemToEdit
+      ? currentItems.filter(item => item.id !== itemToEdit.id)
+      : currentItems;
+
+    const usedMouseIds = getUsedIds(itemsToCheck, 'mouseId');
+    const usedKeyboardIds = getUsedIds(itemsToCheck, 'keyboardId');
+    const usedMotherboardIds = getUsedIds(itemsToCheck, 'motherboardId');
+    const usedCameraIds = getUsedIds(itemsToCheck, 'cameraId');
+    const usedHeadphoneIds = getUsedIds(itemsToCheck, 'headphoneId');
+    const usedPowerSupplyIds = getUsedIds(itemsToCheck, 'powerSupplyId');
+    const usedRamIds = getUsedIds(itemsToCheck, 'ramId');
 
     // Get fresh available assets
     const freshMouseAssets = getAvailableAssets(sysList.filter((s) => s.category === "mouse"), usedMouseIds);
