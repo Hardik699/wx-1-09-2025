@@ -209,6 +209,9 @@ export default function PCLaptopInfo() {
       });
     }
     setShowForm(true);
+
+    // Debug log to verify mode
+    console.log("Form opened in mode:", itemToEdit ? "EDIT" : "ADD", "Item:", itemToEdit?.id || "none");
   };
 
   const save = (e: React.FormEvent) => {
