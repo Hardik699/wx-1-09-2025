@@ -222,13 +222,28 @@ export default function ITPage() {
 
               <div className="space-y-2">
                 <Label className="text-slate-300">System ID</Label>
-                <Input
-                  value={systemId}
-                  onChange={(e) => setSystemId(e.target.value)}
-                  className="bg-slate-800/50 border-slate-700 text-white"
-                  placeholder="PC-123 / Email ID / Asset tag"
-                  required
-                />
+                <Select value={systemId} onValueChange={setSystemId}>
+                  <SelectTrigger className="bg-slate-800/50 border-slate-700 text-white">
+                    <SelectValue placeholder={
+                      availableSystemIds.length
+                        ? "Select available PC/Laptop ID"
+                        : "No PC/Laptop IDs available"
+                    } />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
+                    {availableSystemIds.length === 0 ? (
+                      <div className="px-3 py-2 text-slate-400">
+                        No available PC/Laptop IDs. Create some in PC/Laptop Info first.
+                      </div>
+                    ) : (
+                      availableSystemIds.map((id) => (
+                        <SelectItem key={id} value={id}>
+                          {id}
+                        </SelectItem>
+                      ))
+                    )}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-2">
