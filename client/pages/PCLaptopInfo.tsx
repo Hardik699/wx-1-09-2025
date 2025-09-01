@@ -175,13 +175,13 @@ export default function PCLaptopInfo() {
     const record: Asset = {
       id: form.id || nextWxId(items),
       createdAt: new Date().toISOString(),
-      mouseId: form.mouseId || undefined,
-      keyboardId: form.keyboardId || undefined,
-      motherboardId: form.motherboardId || undefined,
-      cameraId: form.cameraId || undefined,
-      headphoneId: form.headphoneId || undefined,
-      powerSupplyId: form.powerSupplyId || undefined,
-      ramId: form.ramId || undefined,
+      mouseId: form.mouseId.trim() || undefined,
+      keyboardId: form.keyboardId.trim() || undefined,
+      motherboardId: form.motherboardId.trim() || undefined,
+      cameraId: form.cameraId.trim() || undefined,
+      headphoneId: form.headphoneId.trim() || undefined,
+      powerSupplyId: form.powerSupplyId.trim() || undefined,
+      ramId: form.ramId.trim() || undefined,
     };
     const next = [record, ...items];
     setItems(next);
