@@ -191,7 +191,7 @@ export default function PCLaptopInfo() {
     e.preventDefault();
     const record: Asset = {
       id: form.id || nextWxId(items),
-      createdAt: new Date().toISOString(),
+      createdAt: editingItem ? editingItem.createdAt : new Date().toISOString(),
       mouseId: form.mouseId && form.mouseId !== "none" ? form.mouseId.trim() : undefined,
       keyboardId: form.keyboardId && form.keyboardId !== "none" ? form.keyboardId.trim() : undefined,
       motherboardId: form.motherboardId && form.motherboardId !== "none" ? form.motherboardId.trim() : undefined,
@@ -200,7 +200,16 @@ export default function PCLaptopInfo() {
       powerSupplyId: form.powerSupplyId && form.powerSupplyId !== "none" ? form.powerSupplyId.trim() : undefined,
       ramId: form.ramId && form.ramId !== "none" ? form.ramId.trim() : undefined,
     };
-    const next = [record, ...items];
+
+    let next: Asset[];
+    if (editingItem) {
+      // Update existing item
+      next = items.map(item => item.id === editingItem.id ? record : item);
+    } else {
+      // Add new item
+      next = [record, ...items];
+    }
+
     setItems(next);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
 
@@ -227,7 +236,8 @@ export default function PCLaptopInfo() {
     setRamAssets(getAvailableAssets(sysList.filter((s) => s.category === "ram"), usedRamIds));
 
     setShowForm(false);
-    alert("Saved");
+    setEditingItem(null);
+    alert(editingItem ? "Updated successfully!" : "Saved successfully!");
   };
 
   return (
