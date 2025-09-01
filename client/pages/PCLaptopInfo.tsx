@@ -533,7 +533,10 @@ export default function PCLaptopInfo() {
                     type="button"
                     variant="outline"
                     className="border-slate-600 text-slate-300"
-                    onClick={() => setShowForm(false)}
+                    onClick={() => {
+                      setShowForm(false);
+                      setEditingItem(null);
+                    }}
                   >
                     Cancel
                   </Button>
