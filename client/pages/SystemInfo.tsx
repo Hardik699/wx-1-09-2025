@@ -3,6 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { loadDemoData } from "@/lib/createDemoData";
+import { STORAGE_KEY } from "@/lib/systemAssets";
+import { useState, useEffect } from "react";
 import {
   Mouse,
   Keyboard,
@@ -13,6 +16,7 @@ import {
   Camera,
   Monitor,
   Phone,
+  Database,
 } from "lucide-react";
 
 const items = [
