@@ -62,6 +62,7 @@ export default function PCLaptopInfo() {
   const [powerSupplyAssets, setPowerSupplyAssets] = useState<SysAsset[]>([]);
   const [ramAssets, setRamAssets] = useState<SysAsset[]>([]);
   const [showForm, setShowForm] = useState(false);
+  const [editingItem, setEditingItem] = useState<Asset | null>(null);
   const [form, setForm] = useState({
     id: "",
     mouseId: "",
