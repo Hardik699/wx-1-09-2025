@@ -252,6 +252,19 @@ export default function PCLaptopInfo() {
 
     setShowForm(false);
     setEditingItem(null);
+
+    // Reset form to clear any residual state
+    setForm({
+      id: "",
+      mouseId: "none",
+      keyboardId: "none",
+      motherboardId: "none",
+      cameraId: "none",
+      headphoneId: "none",
+      powerSupplyId: "none",
+      ramId: "none",
+    });
+
     alert(editingItem ? "Updated successfully!" : "Saved successfully!");
   };
 
