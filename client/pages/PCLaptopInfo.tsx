@@ -126,6 +126,15 @@ export default function PCLaptopInfo() {
     setRamAssets(getAvailableAssets(allRamAssets, usedRamIds));
   }, []);
 
+  const addNew = () => {
+    // Force reset all edit state
+    setEditingItem(null);
+    setShowForm(false);
+
+    // Then open form in add mode
+    openForm();
+  };
+
   const openForm = (itemToEdit?: Asset) => {
     // Reset form state first
     if (!itemToEdit) {
