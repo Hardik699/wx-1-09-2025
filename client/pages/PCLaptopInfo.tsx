@@ -123,6 +123,11 @@ export default function PCLaptopInfo() {
   }, []);
 
   const openForm = (itemToEdit?: Asset) => {
+    // Reset form state first
+    if (!itemToEdit) {
+      setEditingItem(null);
+    }
+
     // Refresh available assets before opening form
     const raw = localStorage.getItem(STORAGE_KEY);
     const currentItems = raw ? JSON.parse(raw) : [];
