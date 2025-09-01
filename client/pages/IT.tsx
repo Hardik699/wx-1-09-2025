@@ -21,7 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Plus, Trash2, Save, Shield, ServerCog } from "lucide-react";
+import { Plus, Trash2, Save, Shield, ServerCog, RefreshCw } from "lucide-react";
 
 interface Employee {
   id: string;
