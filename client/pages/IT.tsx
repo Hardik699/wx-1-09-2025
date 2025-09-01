@@ -222,13 +222,19 @@ export default function ITPage() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label className="text-slate-300">System ID</Label>
+                  <div className="flex items-center gap-2">
+                    <Label className="text-slate-300">System ID</Label>
+                    <Badge variant="secondary" className="bg-slate-700 text-slate-300">
+                      {availableSystemIds.length} available
+                    </Badge>
+                  </div>
                   <Button
                     type="button"
                     onClick={loadAvailableSystemIds}
                     size="sm"
                     variant="outline"
                     className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                    title="Refresh available IDs"
                   >
                     <RefreshCw className="h-3 w-3" />
                   </Button>
