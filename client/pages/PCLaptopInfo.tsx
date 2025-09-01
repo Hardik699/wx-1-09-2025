@@ -257,7 +257,10 @@ export default function PCLaptopInfo() {
           </div>
           <div className="flex gap-2 items-center">
             <Button
-              onClick={openForm}
+              onClick={() => {
+                setEditingItem(null);
+                openForm();
+              }}
               className="bg-blue-500 hover:bg-blue-600 text-white"
             >
               Add
