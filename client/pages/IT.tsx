@@ -100,6 +100,7 @@ export default function ITPage() {
   });
   const [lm, setLm] = useState({ id: "", password: "", license: "standard" });
   const [notes, setNotes] = useState("");
+  const [availableSystemIds, setAvailableSystemIds] = useState<string[]>([]);
 
   useEffect(() => {
     if (employee) {
