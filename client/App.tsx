@@ -18,6 +18,7 @@ import ITDashboard from "./pages/ITDashboard";
 import SystemInfo from "./pages/SystemInfo";
 import SystemInfoDetail from "./pages/SystemInfoDetail";
 import PCLaptopInfo from "./pages/PCLaptopInfo";
+import DemoDataView from "./pages/DemoDataView";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/system-info" element={<SystemInfo />} />
           <Route path="/system-info/:slug" element={<SystemInfoDetail />} />
           <Route path="/pc-laptop-info" element={<PCLaptopInfo />} />
+          <Route path="/demo-data" element={<DemoDataView />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

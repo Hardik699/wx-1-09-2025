@@ -3,6 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { loadDemoData } from "@/lib/createDemoData";
+import { STORAGE_KEY } from "@/lib/systemAssets";
+import { useState, useEffect } from "react";
 import {
   Mouse,
   Keyboard,
@@ -13,6 +16,7 @@ import {
   Camera,
   Monitor,
   Phone,
+  Database,
 } from "lucide-react";
 
 const items = [
@@ -83,6 +87,25 @@ const items = [
 
 export default function SystemInfo() {
   const navigate = useNavigate();
+  const [assetCount, setAssetCount] = useState(0);
+
+  useEffect(() => {
+    const existing = localStorage.getItem(STORAGE_KEY);
+    const assets = existing ? JSON.parse(existing) : [];
+    setAssetCount(assets.length);
+  }, []);
+
+  const handleLoadDemo = () => {
+    const newAssets = loadDemoData();
+    if (newAssets.length > 0) {
+      setAssetCount((prev) => prev + newAssets.length);
+      alert(
+        `Loaded ${newAssets.length} demo system assets including mouse, keyboard, and other components!`,
+      );
+    } else {
+      alert("Demo data already exists in the system.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-deep-900 via-blue-deep-800 to-slate-900">
@@ -93,9 +116,26 @@ export default function SystemInfo() {
             <h1 className="text-3xl font-bold text-white">System Info</h1>
             <p className="text-slate-400">Hardware categories</p>
           </div>
-          <Badge variant="secondary" className="bg-slate-700 text-slate-300">
-            {items.length} items
-          </Badge>
+          <div className="flex items-center gap-3">
+            <Button
+              onClick={handleLoadDemo}
+              className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2"
+            >
+              <Database className="h-4 w-4" />
+              Load Demo Data
+            </Button>
+            {assetCount > 0 && (
+              <Button
+                onClick={() => navigate("/demo-data")}
+                className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
+              >
+                View Demo Data
+              </Button>
+            )}
+            <Badge variant="secondary" className="bg-slate-700 text-slate-300">
+              {assetCount} assets | {items.length} categories
+            </Badge>
+          </div>
         </header>
 
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

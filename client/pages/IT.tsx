@@ -21,7 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Plus, Trash2, Save, Shield, ServerCog } from "lucide-react";
+import { Plus, Trash2, Save, Shield, ServerCog, RefreshCw } from "lucide-react";
 
 interface Employee {
   id: string;
@@ -73,11 +73,39 @@ export default function ITPage() {
     if (emps) setEmployees(JSON.parse(emps));
     if (depts) setDepartments(JSON.parse(depts));
     if (its) setRecords(JSON.parse(its));
+
+    // Load available PC/Laptop IDs
+    loadAvailableSystemIds();
   }, []);
+
+  // Load and filter available PC/Laptop IDs
+  const loadAvailableSystemIds = () => {
+    const pcLaptopData = localStorage.getItem("pcLaptopAssets");
+    const itRecords = localStorage.getItem("itAccounts");
+
+    if (pcLaptopData) {
+      const pcLaptops = JSON.parse(pcLaptopData);
+      const pcLaptopIds = pcLaptops.map((item: any) => item.id);
+
+      // Get currently assigned system IDs
+      const assignedIds = itRecords
+        ? JSON.parse(itRecords).map((record: ITRecord) => record.systemId)
+        : [];
+
+      // Filter out assigned IDs to show only available ones
+      const available = pcLaptopIds.filter(
+        (id: string) => !assignedIds.includes(id),
+      );
+      setAvailableSystemIds(available);
+    }
+  };
 
   const saveRecords = (next: ITRecord[]) => {
     setRecords(next);
     localStorage.setItem("itAccounts", JSON.stringify(next));
+
+    // Refresh available system IDs after saving
+    loadAvailableSystemIds();
   };
 
   // Form state
@@ -100,6 +128,7 @@ export default function ITPage() {
   });
   const [lm, setLm] = useState({ id: "", password: "", license: "standard" });
   const [notes, setNotes] = useState("");
+  const [availableSystemIds, setAvailableSystemIds] = useState<string[]>([]);
 
   useEffect(() => {
     if (employee) {
@@ -194,14 +223,52 @@ export default function ITPage() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-slate-300">System ID</Label>
-                <Input
-                  value={systemId}
-                  onChange={(e) => setSystemId(e.target.value)}
-                  className="bg-slate-800/50 border-slate-700 text-white"
-                  placeholder="PC-123 / Email ID / Asset tag"
-                  required
-                />
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Label className="text-slate-300">System ID</Label>
+                    <Badge
+                      variant="secondary"
+                      className="bg-slate-700 text-slate-300"
+                    >
+                      {availableSystemIds.length} available
+                    </Badge>
+                  </div>
+                  <Button
+                    type="button"
+                    onClick={loadAvailableSystemIds}
+                    size="sm"
+                    variant="outline"
+                    className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                    title="Refresh available IDs"
+                  >
+                    <RefreshCw className="h-3 w-3" />
+                  </Button>
+                </div>
+                <Select value={systemId} onValueChange={setSystemId}>
+                  <SelectTrigger className="bg-slate-800/50 border-slate-700 text-white">
+                    <SelectValue
+                      placeholder={
+                        availableSystemIds.length
+                          ? "Select available PC/Laptop ID"
+                          : "No PC/Laptop IDs available"
+                      }
+                    />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
+                    {availableSystemIds.length === 0 ? (
+                      <div className="px-3 py-2 text-slate-400">
+                        No available PC/Laptop IDs. Create some in PC/Laptop
+                        Info first.
+                      </div>
+                    ) : (
+                      availableSystemIds.map((id) => (
+                        <SelectItem key={id} value={id}>
+                          {id}
+                        </SelectItem>
+                      ))
+                    )}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-2">
@@ -463,9 +530,11 @@ export default function ITPage() {
                             variant="outline"
                             size="sm"
                             className="border-red-600 text-red-400"
-                            onClick={() =>
-                              saveRecords(records.filter((x) => x.id !== r.id))
-                            }
+                            onClick={() => {
+                              saveRecords(records.filter((x) => x.id !== r.id));
+                              // Refresh available IDs after deletion
+                              setTimeout(loadAvailableSystemIds, 100);
+                            }}
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>

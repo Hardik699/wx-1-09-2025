@@ -19,14 +19,12 @@ import {
   Settings,
   LogOut,
   User,
-  Plus,
   Menu,
   LogIn,
   Users,
   Building2,
   LayoutDashboard,
   ServerCog,
-  Gauge,
 } from "lucide-react";
 
 export default function AppNav() {
@@ -62,18 +60,6 @@ export default function AppNav() {
     navigate("/login");
   };
 
-  const handleNewUser = () => {
-    // Navigate to admin dashboard and scroll to create user section
-    if (location.pathname === "/admin") {
-      const createUserSection = document.getElementById("create-user-section");
-      if (createUserSection) {
-        createUserSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      navigate("/admin");
-    }
-  };
-
   const handleViewUsers = () => {
     // Navigate to admin dashboard and scroll to users section
     if (location.pathname === "/admin") {
@@ -96,9 +82,6 @@ export default function AppNav() {
 
   const handleIT = () => {
     navigate("/it");
-  };
-  const handleITDashboard = () => {
-    navigate("/it-deshbord");
   };
 
   return (
@@ -131,15 +114,6 @@ export default function AppNav() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={handleNewUser}
-                      className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-all duration-300"
-                    >
-                      <Plus className="h-4 w-4 mr-2" />
-                      New User
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
                       onClick={handleViewUsers}
                       className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-all duration-300"
                     >
@@ -163,15 +137,6 @@ export default function AppNav() {
                     >
                       <ServerCog className="h-4 w-4 mr-2" />
                       IT
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={handleITDashboard}
-                      className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-all duration-300"
-                    >
-                      <Gauge className="h-4 w-4 mr-2" />
-                      IT Dashboard
                     </Button>
                     <Button
                       variant="outline"
@@ -261,17 +226,6 @@ export default function AppNav() {
                             variant="outline"
                             className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
                             onClick={() => {
-                              handleNewUser();
-                              setIsMobileMenuOpen(false);
-                            }}
-                          >
-                            <Plus className="h-4 w-4 mr-2" />
-                            Create New User
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
-                            onClick={() => {
                               handleViewUsers();
                               setIsMobileMenuOpen(false);
                             }}
@@ -300,17 +254,6 @@ export default function AppNav() {
                           >
                             <ServerCog className="h-4 w-4 mr-2" />
                             IT
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
-                            onClick={() => {
-                              handleITDashboard();
-                              setIsMobileMenuOpen(false);
-                            }}
-                          >
-                            <Gauge className="h-4 w-4 mr-2" />
-                            IT Dashboard
                           </Button>
                           <Button
                             variant="outline"
