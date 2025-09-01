@@ -62,17 +62,6 @@ export default function AppNav() {
     navigate("/login");
   };
 
-  const handleNewUser = () => {
-    // Navigate to admin dashboard and scroll to create user section
-    if (location.pathname === "/admin") {
-      const createUserSection = document.getElementById("create-user-section");
-      if (createUserSection) {
-        createUserSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      navigate("/admin");
-    }
-  };
 
   const handleViewUsers = () => {
     // Navigate to admin dashboard and scroll to users section
