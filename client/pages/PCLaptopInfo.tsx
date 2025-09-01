@@ -156,23 +156,16 @@ export default function PCLaptopInfo() {
     setRamAssets(freshRamAssets);
 
     const id = nextWxId(currentItems);
-    const firstMouse = freshMouseAssets[0]?.id || "";
-    const firstKeyboard = freshKeyboardAssets[0]?.id || "";
-    const firstMotherboard = freshMotherboardAssets[0]?.id || "";
-    const firstCamera = freshCameraAssets[0]?.id || "";
-    const firstHeadphone = freshHeadphoneAssets[0]?.id || "";
-    const firstPower = freshPowerSupplyAssets[0]?.id || "";
-    const firstRam = freshRamAssets[0]?.id || "";
 
     setForm({
       id,
-      mouseId: firstMouse,
-      keyboardId: firstKeyboard,
-      motherboardId: firstMotherboard,
-      cameraId: firstCamera,
-      headphoneId: firstHeadphone,
-      powerSupplyId: firstPower,
-      ramId: firstRam,
+      mouseId: "",
+      keyboardId: "",
+      motherboardId: "",
+      cameraId: "",
+      headphoneId: "",
+      powerSupplyId: "",
+      ramId: "",
     });
     setShowForm(true);
   };
