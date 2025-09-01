@@ -264,17 +264,6 @@ export default function AppNav() {
                             variant="outline"
                             className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
                             onClick={() => {
-                              handleITDashboard();
-                              setIsMobileMenuOpen(false);
-                            }}
-                          >
-                            <Gauge className="h-4 w-4 mr-2" />
-                            IT Dashboard
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
-                            onClick={() => {
                               handleHRDashboard();
                               setIsMobileMenuOpen(false);
                             }}
