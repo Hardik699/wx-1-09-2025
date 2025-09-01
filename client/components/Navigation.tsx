@@ -252,17 +252,6 @@ export default function AppNav() {
                             variant="outline"
                             className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
                             onClick={() => {
-                              handleNewUser();
-                              setIsMobileMenuOpen(false);
-                            }}
-                          >
-                            <Plus className="h-4 w-4 mr-2" />
-                            Create New User
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
-                            onClick={() => {
                               handleViewUsers();
                               setIsMobileMenuOpen(false);
                             }}
