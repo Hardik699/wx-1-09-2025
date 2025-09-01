@@ -268,7 +268,9 @@ export default function PCLaptopInfo() {
         {showForm && (
           <Card className="bg-slate-900/50 border-slate-700 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="text-white">Add PC/Laptop</CardTitle>
+              <CardTitle className="text-white">
+                {editingItem ? `Edit PC/Laptop - ${editingItem.id}` : "Add PC/Laptop"}
+              </CardTitle>
               <p className="text-slate-400 text-sm">
                 Only available (unused) component IDs are shown. Already assigned IDs are automatically filtered out.
               </p>
