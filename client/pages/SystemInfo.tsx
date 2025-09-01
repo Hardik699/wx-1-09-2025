@@ -87,6 +87,23 @@ const items = [
 
 export default function SystemInfo() {
   const navigate = useNavigate();
+  const [assetCount, setAssetCount] = useState(0);
+
+  useEffect(() => {
+    const existing = localStorage.getItem(STORAGE_KEY);
+    const assets = existing ? JSON.parse(existing) : [];
+    setAssetCount(assets.length);
+  }, []);
+
+  const handleLoadDemo = () => {
+    const newAssets = loadDemoData();
+    if (newAssets.length > 0) {
+      setAssetCount(prev => prev + newAssets.length);
+      alert(`Loaded ${newAssets.length} demo system assets including mouse, keyboard, and other components!`);
+    } else {
+      alert("Demo data already exists in the system.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-deep-900 via-blue-deep-800 to-slate-900">
