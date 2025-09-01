@@ -193,6 +193,29 @@ export default function PCLaptopInfo() {
     const next = [record, ...items];
     setItems(next);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+
+    // Refresh available assets after saving
+    const sysRaw = localStorage.getItem(SYS_STORAGE_KEY);
+    const sysList: SysAsset[] = sysRaw ? JSON.parse(sysRaw) : [];
+
+    // Get all used IDs including the one we just saved
+    const usedMouseIds = getUsedIds(next, 'mouseId');
+    const usedKeyboardIds = getUsedIds(next, 'keyboardId');
+    const usedMotherboardIds = getUsedIds(next, 'motherboardId');
+    const usedCameraIds = getUsedIds(next, 'cameraId');
+    const usedHeadphoneIds = getUsedIds(next, 'headphoneId');
+    const usedPowerSupplyIds = getUsedIds(next, 'powerSupplyId');
+    const usedRamIds = getUsedIds(next, 'ramId');
+
+    // Update available assets
+    setMouseAssets(getAvailableAssets(sysList.filter((s) => s.category === "mouse"), usedMouseIds));
+    setKeyboardAssets(getAvailableAssets(sysList.filter((s) => s.category === "keyboard"), usedKeyboardIds));
+    setMotherboardAssets(getAvailableAssets(sysList.filter((s) => s.category === "motherboard"), usedMotherboardIds));
+    setCameraAssets(getAvailableAssets(sysList.filter((s) => s.category === "camera"), usedCameraIds));
+    setHeadphoneAssets(getAvailableAssets(sysList.filter((s) => s.category === "headphone"), usedHeadphoneIds));
+    setPowerSupplyAssets(getAvailableAssets(sysList.filter((s) => s.category === "power-supply"), usedPowerSupplyIds));
+    setRamAssets(getAvailableAssets(sysList.filter((s) => s.category === "ram"), usedRamIds));
+
     setShowForm(false);
     alert("Saved");
   };
