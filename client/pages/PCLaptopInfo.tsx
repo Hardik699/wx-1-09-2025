@@ -275,7 +275,7 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
-                      <SelectItem value="">
+                      <SelectItem value="none">
                         <span className="text-slate-400">-- No Mouse --</span>
                       </SelectItem>
                       {mouseAssets.length === 0 ? (
@@ -310,7 +310,7 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
-                      <SelectItem value="">
+                      <SelectItem value="none">
                         <span className="text-slate-400">-- No Keyboard --</span>
                       </SelectItem>
                       {keyboardAssets.length === 0 ? (
@@ -345,7 +345,7 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
-                      <SelectItem value="">
+                      <SelectItem value="none">
                         <span className="text-slate-400">-- No Motherboard --</span>
                       </SelectItem>
                       {motherboardAssets.length === 0 ? (
@@ -380,7 +380,7 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
-                      <SelectItem value="">
+                      <SelectItem value="none">
                         <span className="text-slate-400">-- No Camera --</span>
                       </SelectItem>
                       {cameraAssets.length === 0 ? (
@@ -415,7 +415,7 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
-                      <SelectItem value="">
+                      <SelectItem value="none">
                         <span className="text-slate-400">-- No Headphone --</span>
                       </SelectItem>
                       {headphoneAssets.length === 0 ? (
@@ -450,7 +450,7 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
-                      <SelectItem value="">
+                      <SelectItem value="none">
                         <span className="text-slate-400">-- No Power Supply --</span>
                       </SelectItem>
                       {powerSupplyAssets.length === 0 ? (
@@ -481,7 +481,7 @@ export default function PCLaptopInfo() {
                       />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-700 text-white max-h-64">
-                      <SelectItem value="">
+                      <SelectItem value="none">
                         <span className="text-slate-400">-- No RAM --</span>
                       </SelectItem>
                       {ramAssets.length === 0 ? (
