@@ -175,13 +175,13 @@ export default function PCLaptopInfo() {
     const record: Asset = {
       id: form.id || nextWxId(items),
       createdAt: new Date().toISOString(),
-      mouseId: form.mouseId.trim() || undefined,
-      keyboardId: form.keyboardId.trim() || undefined,
-      motherboardId: form.motherboardId.trim() || undefined,
-      cameraId: form.cameraId.trim() || undefined,
-      headphoneId: form.headphoneId.trim() || undefined,
-      powerSupplyId: form.powerSupplyId.trim() || undefined,
-      ramId: form.ramId.trim() || undefined,
+      mouseId: form.mouseId && form.mouseId !== "none" ? form.mouseId.trim() : undefined,
+      keyboardId: form.keyboardId && form.keyboardId !== "none" ? form.keyboardId.trim() : undefined,
+      motherboardId: form.motherboardId && form.motherboardId !== "none" ? form.motherboardId.trim() : undefined,
+      cameraId: form.cameraId && form.cameraId !== "none" ? form.cameraId.trim() : undefined,
+      headphoneId: form.headphoneId && form.headphoneId !== "none" ? form.headphoneId.trim() : undefined,
+      powerSupplyId: form.powerSupplyId && form.powerSupplyId !== "none" ? form.powerSupplyId.trim() : undefined,
+      ramId: form.ramId && form.ramId !== "none" ? form.ramId.trim() : undefined,
     };
     const next = [record, ...items];
     setItems(next);
